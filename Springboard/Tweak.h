@@ -64,7 +64,11 @@
 
 @end
 
-@interface CSFixedFooterViewController : UIViewController
+@interface CSCoverSheetView : UIView
+@property(strong, nonatomic) UIView *slideableContentView;
+@end
+
+@interface CSCombinedListViewController : UIViewController
 
 @property(strong, nonatomic) MSHFView *mshfview;
 
@@ -99,4 +103,13 @@
 
 @interface PrysmMediaModuleViewController : UIViewController
 @property (nonatomic,retain) MSHFView * mshfView;     
+@end
+
+@interface SBMediaController
++ (instancetype)sharedInstance;
+- (BOOL)isPlaying;
+@end
+
+@interface MSHFConfig ()
+- (void)reload;
 @end

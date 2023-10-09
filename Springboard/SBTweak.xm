@@ -223,7 +223,7 @@ static MSHFConfig *SBLSconfig = NULL;
 
 %group ios13SBLS
 
-%hook CSFixedFooterViewController
+%hook CSCombinedListViewController
 
 %property (strong,nonatomic) MSHFView *mshfview;
 
@@ -237,6 +237,7 @@ static MSHFConfig *SBLSconfig = NULL;
     [self.view addSubview:self.mshfview];
     [self.view bringSubviewToFront:self.mshfview];
     
+    self.mshfview.userInteractionEnabled = NO;
     self.mshfview.translatesAutoresizingMaskIntoConstraints = NO;
     [self.mshfview.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor].active = YES;
     [self.mshfview.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor].active = YES;
@@ -251,7 +252,7 @@ static MSHFConfig *SBLSconfig = NULL;
     }
 }
 
--(void)viewWillDisappear:(BOOL)animated{
+-(void)viewDidDisappear:(BOOL)animated{
     %orig;
     if([SBLSconfig view]) {
         [self.mshfview stop];
